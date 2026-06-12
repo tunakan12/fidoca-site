@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>フィドカ ― 給油・燃費・整備記録</title>
+<meta name="description" content="フィドカは、給油・実燃費・整備記録をかんたんに残せる、日本のカーオーナーのためのクルマ管理アプリです。">
+<style>
+  :root {
+    --bg: #F6F7F9;
+    --surface: #FFFFFF;
+    --text: #20242A;
+    --muted: #7A828E;
+    --border: #E2E6EA;
+    --primary: #176B5D;
+    --primary-soft: #DDEFEA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+    line-height: 1.9;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 20px;
+    text-align: center;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    border-radius: 22px;
+    background: var(--primary);
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  h1 { font-size: 32px; margin: 0 0 4px; letter-spacing: 0.04em; }
+  .tagline { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: left;
+  }
+  .card h2 { font-size: 16px; margin: 0 0 12px; color: var(--primary); }
+  .card ul { margin: 0; padding-left: 22px; font-size: 15px; }
+  .badge {
+    display: inline-block;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 36px;
+  }
+  .links { margin-top: 36px; font-size: 14px; }
+  .links a { color: var(--primary); }
+  footer { margin-top: 48px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">🚗</div>
+  <h1>フィドカ</h1>
+  <p class="tagline">給油・燃費・整備記録 ― 愛車の記録をかんたんに</p>
+  <div class="badge">iOS 版 近日公開予定</div>
+  <div class="card">
+    <h2>フィドカでできること</h2>
+    <ul>
+      <li>30秒で終わる給油記録と、満タン法による実燃費の自動計算</li>
+      <li>オイル交換などの整備記録と、次回時期のリマインド</li>
+      <li>燃費の推移グラフで愛車の調子をひと目で把握</li>
+    </ul>
+  </div>
+  <p class="links"><a href="./privacy.html">プライバシーポリシー</a></p>
+  <footer>© 2026 フィドカ ― fido(イタリア語で「忠実な」)+ car</footer>
+</div>
+</body>
+</html>
