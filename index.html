@@ -40,7 +40,24 @@
     margin: 0 auto 20px;
   }
   h1 { font-size: 32px; margin: 0 0 4px; letter-spacing: 0.04em; }
-  .tagline { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
+  .tagline { color: var(--muted); font-size: 15px; margin-bottom: 28px; }
+  .download {
+    margin-bottom: 36px;
+    padding: 24px;
+    border: 1px solid #CFE5DF;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #FFFFFF 0%, #EAF6F2 100%);
+  }
+  .download h2 {
+    margin: 10px 0 4px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .download p {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 13px;
+  }
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -58,7 +75,39 @@
     padding: 4px 14px;
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 36px;
+  }
+  .app-store-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background: #111315;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(17, 19, 21, 0.16);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .app-store-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 24px rgba(17, 19, 21, 0.22);
+  }
+  .app-store-link:focus-visible {
+    outline: 3px solid rgba(23, 107, 93, 0.3);
+    outline-offset: 3px;
+  }
+  .app-store-link svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 40px 16px; }
+    .download { padding: 22px 16px; }
+    .app-store-link { display: flex; width: 100%; }
   }
   .links { margin-top: 36px; font-size: 14px; }
   .links a { color: var(--primary); }
@@ -70,7 +119,18 @@
   <img class="logo" src="./fidoca-icon.png" alt="フィドカのアプリアイコン" width="88" height="88">
   <h1>フィドカ</h1>
   <p class="tagline">給油・燃費・整備記録 ― 愛車の記録をかんたんに</p>
-  <div class="badge">iOS 版 公開済み</div>
+  <section class="download" aria-labelledby="download-title">
+    <span class="badge">App Storeで無料配信中</span>
+    <h2 id="download-title">フィドカをiPhoneに</h2>
+    <p>登録不要ですぐに使えます。iOS 15.1以降に対応。</p>
+    <a class="app-store-link" href="https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M8 5h11v11M19 5 7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 13v6H5V7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      App Storeで見る
+    </a>
+  </section>
   <div class="card">
     <h2>フィドカでできること</h2>
     <ul>
