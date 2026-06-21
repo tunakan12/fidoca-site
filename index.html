@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>フィドカ ― 給油・燃費・整備記録</title>
 <meta name="description" content="フィドカは、給油・実燃費・整備記録をかんたんに残せる、日本のカーオーナーのためのクルマ管理アプリです。">
+<link rel="icon" type="image/png" href="./fidoca-icon.png">
+<link rel="apple-touch-icon" href="./fidoca-icon.png">
 <style>
   :root {
     --bg: #F6F7F9;
@@ -30,16 +32,12 @@
     text-align: center;
   }
   .logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     width: 88px;
     height: 88px;
     border-radius: 22px;
-    background: var(--primary);
-    color: #fff;
-    font-size: 40px;
-    margin-bottom: 20px;
+    object-fit: cover;
+    margin: 0 auto 20px;
   }
   h1 { font-size: 32px; margin: 0 0 4px; letter-spacing: 0.04em; }
   .tagline { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
@@ -69,10 +67,10 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="logo">🚗</div>
+  <img class="logo" src="./fidoca-icon.png" alt="フィドカのアプリアイコン" width="88" height="88">
   <h1>フィドカ</h1>
   <p class="tagline">給油・燃費・整備記録 ― 愛車の記録をかんたんに</p>
-  <div class="badge">iOS 版 近日公開予定</div>
+  <div class="badge">iOS 版 公開済み</div>
   <div class="card">
     <h2>フィドカでできること</h2>
     <ul>
