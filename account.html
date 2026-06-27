@@ -101,7 +101,7 @@
     <div class="divider">または</div>
     <button class="btn btn-ghost btn-block" id="magicBtn" type="button">パスワードなしでログイン(メールリンク)</button>
 
-    <p class="small-note">続行することで、<a href="./privacy.html">プライバシーポリシー</a>に同意したものとみなされます。<br>アプリで購入したProは、同じメールでログインするとWebでも有効です。</p>
+    <p class="small-note">続行することで、<a href="./terms.html">利用規約</a>と<a href="./privacy.html">プライバシーポリシー</a>に同意したものとみなされます。<br>アプリで購入したPro / Pro+は、同じメールでログインするとWebでも有効です。</p>
   </section>
 
   <!-- 認証後 -->
@@ -130,18 +130,19 @@
         <h3>Pro</h3>
         <div class="p">¥4,900<small> / 年</small></div>
         <div class="pn">または ¥500 / 月。Web価格はApp Storeより少しお得</div>
-        <ul><li>広告非表示</li><li>CSVエクスポート</li><li>自動バックアップ</li><li>クラウド同期</li></ul>
+        <ul><li>広告非表示</li><li>CSVエクスポート</li><li>車2台まで管理</li></ul>
         <button class="btn btn-primary btn-block" data-plan="pro" type="button">Proを年額で始める</button>
       </div>
       <div class="up-card">
         <h3>Pro+</h3>
-        <div class="p">¥8,800<small> / 年</small></div>
+        <div class="p">¥8,900<small> / 年</small></div>
         <div class="pn">または ¥900 / 月。複数台をまとめて管理</div>
-        <ul><li>複数台の車両管理</li><li>Pro機能をすべて</li><li>家族用・仕事用も整理</li></ul>
+        <ul><li>3台以上の車両管理</li><li>Pro機能をすべて</li><li>自動バックアップ</li><li>クラウド同期</li></ul>
         <button class="btn btn-soft btn-block" data-plan="pro_plus" type="button">Pro+を年額で始める</button>
       </div>
     </div>
     <p class="small-note" id="purchaseNote"></p>
+    <p class="small-note"><a href="./terms.html">利用規約</a> / <a href="./privacy.html">プライバシーポリシー</a> / <a href="./commerce.html">特定商取引法に基づく表記</a></p>
 
     <div class="divider">　</div>
     <button class="btn btn-ghost btn-block" id="signOutBtn" type="button">ログアウト</button>
@@ -275,7 +276,7 @@
     badge.className = 'plan-badge ' + tier;
     badge.textContent = planLabel(tier) + ' プラン';
     if (tier === 'free') {
-      meta.textContent = '無料プランをご利用中です。Pro / Pro+ でクラウド同期や複数台管理が使えます。';
+      meta.textContent = '無料プランをご利用中です。Proで広告非表示・CSV・2台管理、Pro+でクラウド同期や3台以上の管理が使えます。';
     } else {
       const storeMap = { app_store: 'App Store', play_store: 'Google Play', stripe: 'Web(カード)' };
       const where = sub && sub.store ? '（' + (storeMap[sub.store] || sub.store) + 'で購入）' : '';
