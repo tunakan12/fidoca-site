@@ -11,15 +11,15 @@ window.FIDOCA_CONFIG = {
   // RevenueCat ダッシュボードで Web Billing を有効化し、公開APIキー(rcb_...)を発行して貼り付ける。
   // 既存の revenuecat-webhook が RC_BILLING(=Web Billing) を store='stripe' として subscriptions に反映するため、
   // ここを設定するだけで「Webで契約 → モバイルでも Pro 有効」が成立する。
-  REVENUECAT_WEB_BILLING_KEY: '', // 例: 'rcb_xxxxxxxxxxxxxxxxxxxx'
+  REVENUECAT_WEB_BILLING_KEY: 'rcb_rfNdlphacTbzOVzJMrigRQOneecG',
 
   // エンタイトルメント識別子(RevenueCat の Entitlement / webhook と一致させる)
   ENTITLEMENT_PRO: 'pro',
   ENTITLEMENT_PRO_PLUS: 'pro_plus',
 
   // RevenueCat Offering 内の Package 識別子(任意。未指定なら current offering の先頭から探す)
-  PACKAGE_PRO: 'pro_monthly',
-  PACKAGE_PRO_PLUS: 'pro_plus_monthly',
+  PACKAGE_PRO: 'pro_annual',
+  PACKAGE_PRO_PLUS: 'pro_plus_annual',
 
   APP_STORE_URL:
     'https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740',

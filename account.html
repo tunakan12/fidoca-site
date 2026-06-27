@@ -128,17 +128,17 @@
     <div class="upgrade-grid">
       <div class="up-card featured">
         <h3>Pro</h3>
-        <div class="p">2台まで</div>
-        <div class="pn">広告なし・クラウド同期</div>
+        <div class="p">¥4,900<small> / 年</small></div>
+        <div class="pn">または ¥500 / 月。Web価格はApp Storeより少しお得</div>
         <ul><li>広告非表示</li><li>CSVエクスポート</li><li>自動バックアップ</li><li>クラウド同期</li></ul>
-        <button class="btn btn-primary btn-block" data-plan="pro" type="button">Proにする</button>
+        <button class="btn btn-primary btn-block" data-plan="pro" type="button">Proを年額で始める</button>
       </div>
       <div class="up-card">
         <h3>Pro+</h3>
-        <div class="p">3台以上</div>
-        <div class="pn">複数台をまとめて</div>
+        <div class="p">¥8,800<small> / 年</small></div>
+        <div class="pn">または ¥900 / 月。複数台をまとめて管理</div>
         <ul><li>複数台の車両管理</li><li>Pro機能をすべて</li><li>家族用・仕事用も整理</li></ul>
-        <button class="btn btn-soft btn-block" data-plan="pro_plus" type="button">Pro+にする</button>
+        <button class="btn btn-soft btn-block" data-plan="pro_plus" type="button">Pro+を年額で始める</button>
       </div>
     </div>
     <p class="small-note" id="purchaseNote"></p>
@@ -323,7 +323,7 @@
       const current = offerings.current;
       if (!current) throw new Error('購入プランが見つかりません（RevenueCatのOffering設定をご確認ください）。');
       const pkg = current.availablePackages.find((p) => p.identifier === wantedId) || current.availablePackages[0];
-      await purchasesInstance.purchase({ rcPackage: pkg });
+      await purchasesInstance.purchasePackage(pkg, user.email || undefined);
       showMsg(dashMsg, 'ok', 'ご購入ありがとうございます。購読状態を反映しています…');
       setTimeout(() => location.reload(), 2500);
     } catch (err) {
