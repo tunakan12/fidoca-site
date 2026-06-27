@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>フィドカ | 給油・燃費・整備・ガソリン価格をまとめる車管理アプリ</title>
-<meta name="description" content="フィドカは、給油記録、満タン法の燃費計算、整備リマインド、維持費レポート、レシートOCR、近くのガソリン価格マップに対応した日本向けの車管理アプリです。">
+<meta name="description" content="フィドカは、給油記録、満タン法の燃費計算、整備リマインド、維持費レポート、レシートOCR、近くのガソリン価格マップに対応した日本向けの車管理アプリです。iOSアプリとWebの両方から使えます。">
 <meta name="keywords" content="フィドカ,車管理アプリ,給油記録,燃費記録,ガソリン価格,レシートOCR,整備記録,メンテナンス,オイル交換,車検,維持費,カーライフ">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#176B5D">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="フィドカ">
 <meta property="og:title" content="フィドカ | 給油・燃費・整備をかんたん記録">
-<meta property="og:description" content="給油、燃費、整備、維持費、ガソリン価格マップ、レシートOCRまで。愛車の記録をまとめて管理できる日本向け車管理アプリ。">
+<meta property="og:description" content="給油、燃費、整備、維持費、ガソリン価格マップ、レシートOCRまで。愛車の記録をまとめて管理できる日本向け車管理アプリ。iOSとWebに対応。">
 <meta property="og:url" content="https://fidoca.jp/">
 <meta property="og:image" content="https://fidoca.jp/fidoca-icon.png">
 <meta name="twitter:card" content="summary">
@@ -27,653 +27,120 @@
   "@type": "SoftwareApplication",
   "name": "フィドカ",
   "alternateName": "Fidoca",
-  "operatingSystem": "iOS",
+  "operatingSystem": "iOS, Web",
   "applicationCategory": "UtilitiesApplication",
   "description": "給油記録、燃費計算、整備記録、維持費レポート、レシートOCR、ガソリン価格マップに対応した日本向けの車管理アプリです。",
   "url": "https://fidoca.jp/",
   "image": "https://fidoca.jp/fidoca-icon.png",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "JPY"
-  },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
   "downloadUrl": "https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740"
 }
 </script>
-<style>
-  :root {
-    --bg: #F5F7F8;
-    --surface: #FFFFFF;
-    --surface-soft: #EDF4F1;
-    --ink: #1E2429;
-    --muted: #68737F;
-    --line: #DDE4E7;
-    --primary: #176B5D;
-    --primary-strong: #0F4D43;
-    --primary-soft: #DDEFEA;
-    --accent: #8CCB5E;
-    --amber: #F3B33D;
-    --danger-soft: #F9ECE6;
-    --shadow: 0 18px 48px rgba(20, 36, 42, 0.14);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
-    line-height: 1.75;
-  }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  .skip-link {
-    position: absolute;
-    left: 16px;
-    top: -48px;
-    z-index: 10;
-    background: var(--ink);
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: top 0.16s ease;
-  }
-  .skip-link:focus { top: 16px; }
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    border-bottom: 1px solid rgba(221, 228, 231, 0.75);
-    background: rgba(245, 247, 248, 0.86);
-    backdrop-filter: blur(14px);
-  }
-  .nav {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-  }
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--ink);
-    text-decoration: none;
-    font-weight: 800;
-    white-space: nowrap;
-  }
-  .brand img {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-  }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 700;
-  }
-  .nav-links a { text-decoration: none; }
-  .nav-links a:hover { color: var(--primary); }
-  .hero {
-    min-height: 82vh;
-    display: grid;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--line);
-    background:
-      linear-gradient(90deg, rgba(245,247,248,0.98) 0%, rgba(245,247,248,0.92) 43%, rgba(245,247,248,0.62) 100%),
-      url("./assets/screenshot-home.png");
-    background-repeat: no-repeat;
-    background-position: right 9vw center;
-    background-size: auto 112%;
-  }
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 1px;
-    background: var(--line);
-  }
-  .hero-inner {
-    width: min(1120px, calc(100% - 40px));
-    margin: 0 auto;
-    padding: 72px 0 64px;
-    position: relative;
-    z-index: 1;
-  }
-  .hero-copy { max-width: 640px; }
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 16px;
-    color: var(--primary-strong);
-    font-size: 13px;
-    font-weight: 800;
-  }
-  .eyebrow::before {
-    content: "";
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  h1, h2, h3, p { margin-top: 0; }
-  h1 {
-    margin-bottom: 18px;
-    font-size: clamp(38px, 7vw, 78px);
-    line-height: 1.08;
-    letter-spacing: 0;
-  }
-  .lead {
-    max-width: 600px;
-    margin-bottom: 28px;
-    color: #3E4952;
-    font-size: clamp(16px, 2.1vw, 20px);
-    line-height: 1.9;
-  }
-  .actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .app-store-link,
-  .secondary-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 50px;
-    padding: 12px 18px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 800;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-  }
-  .app-store-link {
-    background: #111315;
-    color: #fff;
-    box-shadow: 0 12px 24px rgba(17, 19, 21, 0.18);
-  }
-  .secondary-link {
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.78);
-    color: var(--primary-strong);
-  }
-  .app-store-link:hover,
-  .secondary-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 26px rgba(20, 36, 42, 0.12);
-  }
-  .note-line {
-    color: var(--muted);
-    font-size: 13px;
-    font-weight: 700;
-  }
-  .quick-stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-    width: min(620px, 100%);
-    margin-top: 36px;
-  }
-  .stat {
-    min-height: 94px;
-    border: 1px solid rgba(221, 228, 231, 0.9);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.78);
-    padding: 14px;
-  }
-  .stat strong {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 22px;
-    line-height: 1.2;
-  }
-  .stat span {
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 700;
-  }
-  .section {
-    padding: 76px 20px;
-  }
-  .section.alt { background: var(--surface); }
-  .container {
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-  .section-head {
-    max-width: 720px;
-    margin-bottom: 32px;
-  }
-  .section-head h2 {
-    margin-bottom: 10px;
-    font-size: clamp(28px, 4vw, 44px);
-    line-height: 1.22;
-    letter-spacing: 0;
-  }
-  .section-head p {
-    color: var(--muted);
-    font-size: 16px;
-  }
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .feature {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface);
-    padding: 22px;
-  }
-  .feature h3 {
-    margin-bottom: 8px;
-    color: var(--primary-strong);
-    font-size: 18px;
-  }
-  .feature p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .showcase {
-    display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    align-items: center;
-    gap: 40px;
-  }
-  .phone-strip {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    align-items: start;
-  }
-  .phone {
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: #E9EEF0;
-    box-shadow: var(--shadow);
-  }
-  .phone:nth-child(2) { margin-top: 36px; }
-  .phone:nth-child(3) { margin-top: 72px; }
-  .phone img {
-    width: 100%;
-    height: auto;
-  }
-  .workflow {
-    display: grid;
-    gap: 12px;
-  }
-  .step {
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 16px;
-    align-items: start;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface);
-    padding: 18px;
-  }
-  .step-number {
-    display: grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 8px;
-    background: var(--primary-soft);
-    color: var(--primary-strong);
-    font-weight: 900;
-  }
-  .step h3 {
-    margin-bottom: 4px;
-    font-size: 17px;
-  }
-  .step p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .split {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-  .info-panel {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface);
-    padding: 24px;
-  }
-  .map-demo {
-    min-height: 310px;
-    overflow: hidden;
-    border: 1px solid #C7D8D4;
-    border-radius: 8px;
-    background:
-      linear-gradient(90deg, rgba(255,255,255,0.42) 49%, rgba(23,107,93,0.1) 50%, rgba(255,255,255,0.42) 51%),
-      linear-gradient(0deg, rgba(255,255,255,0.42) 49%, rgba(23,107,93,0.1) 50%, rgba(255,255,255,0.42) 51%),
-      #E8F1EE;
-    background-size: 74px 74px;
-    position: relative;
-  }
-  .pin {
-    position: absolute;
-    min-width: 96px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    background: var(--surface);
-    border: 1px solid #C8DAD5;
-    box-shadow: 0 10px 22px rgba(20, 36, 42, 0.12);
-    color: var(--primary-strong);
-    font-size: 13px;
-    font-weight: 900;
-  }
-  .pin span {
-    display: block;
-    color: var(--muted);
-    font-size: 11px;
-    font-weight: 700;
-  }
-  .pin.one { left: 11%; top: 18%; }
-  .pin.two { right: 12%; top: 36%; }
-  .pin.three { left: 30%; bottom: 18%; }
-  .route {
-    position: absolute;
-    left: 20%;
-    right: 18%;
-    top: 51%;
-    height: 5px;
-    border-radius: 999px;
-    background: var(--amber);
-    transform: rotate(-13deg);
-  }
-  .receipt-demo {
-    min-height: 310px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: #F7F9FA;
-    padding: 18px;
-    display: grid;
-    align-content: center;
-    gap: 10px;
-  }
-  .receipt-paper {
-    width: min(300px, 100%);
-    margin: 0 auto;
-    border-radius: 8px;
-    background: var(--surface);
-    box-shadow: 0 18px 34px rgba(20, 36, 42, 0.12);
-    padding: 18px;
-    font-family: "Yu Gothic", "Noto Sans JP", sans-serif;
-  }
-  .receipt-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    border-bottom: 1px dashed #CED7DB;
-    padding: 8px 0;
-    font-size: 13px;
-  }
-  .receipt-row strong { color: var(--primary-strong); }
-  .scan-line {
-    height: 4px;
-    border-radius: 999px;
-    background: var(--accent);
-    box-shadow: 0 0 0 5px rgba(140, 203, 94, 0.18);
-  }
-  .mini-title {
-    margin-bottom: 10px;
-    color: var(--primary-strong);
-    font-size: 22px;
-    line-height: 1.35;
-  }
-  .bullet-list {
-    margin: 14px 0 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    gap: 8px;
-  }
-  .bullet-list li {
-    padding-left: 18px;
-    position: relative;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .bullet-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--primary);
-  }
-  .plan-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-  }
-  .plan {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface);
-    padding: 22px;
-  }
-  .plan.recommended {
-    border-color: #B9D8D0;
-    background: var(--surface-soft);
-  }
-  .plan h3 {
-    margin-bottom: 4px;
-    font-size: 18px;
-  }
-  .plan .price {
-    margin-bottom: 12px;
-    color: var(--primary-strong);
-    font-size: 24px;
-    font-weight: 900;
-  }
-  .plan p,
-  .plan li {
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .plan ul {
-    margin: 0;
-    padding-left: 18px;
-  }
-  .faq-list {
-    display: grid;
-    gap: 10px;
-  }
-  details {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--surface);
-    padding: 16px 18px;
-  }
-  summary {
-    cursor: pointer;
-    color: var(--primary-strong);
-    font-weight: 800;
-  }
-  details p {
-    margin: 10px 0 0;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .cta-band {
-    background: var(--primary-strong);
-    color: #fff;
-    padding: 58px 20px;
-  }
-  .cta-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  .cta-inner h2 {
-    margin-bottom: 8px;
-    font-size: clamp(26px, 4vw, 40px);
-  }
-  .cta-inner p {
-    margin: 0;
-    color: rgba(255,255,255,0.78);
-  }
-  .site-footer {
-    padding: 28px 20px;
-    color: var(--muted);
-    font-size: 12px;
-  }
-  .footer-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-  }
-  .footer-inner a { color: var(--primary-strong); }
-  @media (max-width: 920px) {
-    .hero {
-      min-height: auto;
-      background:
-        linear-gradient(180deg, rgba(245,247,248,0.98) 0%, rgba(245,247,248,0.9) 58%, rgba(245,247,248,0.98) 100%),
-        url("./assets/screenshot-home.png");
-      background-repeat: no-repeat;
-      background-position: right -88px bottom -80px;
-      background-size: auto 78%;
-    }
-    .hero-inner { padding-top: 58px; padding-bottom: 220px; }
-    .feature-grid,
-    .showcase,
-    .split,
-    .plan-grid {
-      grid-template-columns: 1fr;
-    }
-    .phone-strip {
-      max-width: 620px;
-      margin: 0 auto;
-    }
-    .phone:nth-child(2),
-    .phone:nth-child(3) {
-      margin-top: 0;
-    }
-    .cta-inner {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-  @media (max-width: 640px) {
-    .nav { padding-inline: 16px; }
-    .nav-links a:not(.download-nav) { display: none; }
-    .hero-inner { width: calc(100% - 32px); padding-bottom: 190px; }
-    .quick-stats { grid-template-columns: 1fr; }
-    .section { padding: 56px 16px; }
-    .phone-strip {
-      grid-template-columns: 1fr 1fr;
-    }
-    .phone-strip .phone:last-child { display: none; }
-    .app-store-link,
-    .secondary-link {
-      width: 100%;
-    }
-    .footer-inner { flex-direction: column; }
-  }
-</style>
+<link rel="stylesheet" href="./assets/site.css">
 </head>
 <body>
 <a class="skip-link" href="#content">本文へ移動</a>
+
 <header class="site-header">
   <nav class="nav" aria-label="サイト内ナビゲーション">
     <a class="brand" href="./index.html">
-      <img src="./fidoca-icon.png" alt="" width="36" height="36">
+      <img src="./fidoca-icon.png" alt="" width="34" height="34">
       <span>フィドカ</span>
     </a>
     <div class="nav-links">
       <a href="#features">機能</a>
       <a href="#map">価格マップ</a>
       <a href="#plans">プラン</a>
-      <a href="./privacy.html">プライバシー</a>
-      <a class="download-nav" href="https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740" target="_blank" rel="noopener noreferrer">入手</a>
+      <a href="#faq">よくある質問</a>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-login" href="./account.html">ログイン</a>
+      <a class="btn btn-primary" href="./account.html?mode=signup" style="min-height:42px;padding:9px 18px;font-size:14px;">無料で始める</a>
     </div>
   </nav>
 </header>
 
 <main id="content">
+  <!-- HERO -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">日本向けの車管理アプリ</p>
-        <h1 id="hero-title">フィドカ</h1>
-        <p class="lead">給油、燃費、整備、維持費をひとつに。レシート読み取りや近くのガソリン価格マップも使える、愛車のための記録アプリです。</p>
-        <div class="actions">
-          <a class="app-store-link" href="https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740" target="_blank" rel="noopener noreferrer">App Storeで無料ダウンロード</a>
-          <a class="secondary-link" href="#features">できることを見る</a>
+        <span class="hero-badge"><span class="dot"></span>iOSアプリ & Web に対応</span>
+        <h1 id="hero-title">愛車の記録を、<br><span class="grad">ぜんぶ一つに。</span></h1>
+        <p class="lead">給油・燃費・整備・維持費をまとめて管理。レシート読み取りや近くのガソリン価格マップも。スマホでもWebでも、あなたのカーライフを記録します。</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 1.5c.1 1-.3 2-1 2.8-.7.8-1.7 1.4-2.7 1.3-.1-1 .4-2 1-2.7.7-.8 1.8-1.4 2.7-1.4zM19.5 17c-.5 1.2-.8 1.7-1.4 2.7-.9 1.4-2.2 3.1-3.7 3.1-1.4 0-1.7-.9-3.6-.9-1.8 0-2.2.9-3.5.9-1.6 0-2.8-1.6-3.7-2.9C1.1 17.6.7 13.4 2.3 11c1-1.5 2.6-2.4 4.1-2.4 1.6 0 2.5.9 3.7.9 1.2 0 1.9-.9 3.7-.9 1.4 0 2.8.7 3.8 2-3.3 1.8-2.8 6.5.9 7.4z"/></svg>
+            App Storeで入手
+          </a>
+          <a class="btn btn-ghost" href="./account.html?mode=signup">Webで無料登録</a>
         </div>
-        <p class="note-line">iOS 15.1以降に対応。無料で始められます。</p>
-        <div class="quick-stats" aria-label="フィドカの主な特徴">
-          <div class="stat">
-            <strong>30秒</strong>
-            <span>距離・量・金額で給油記録</span>
+        <p class="hero-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#176B5D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          iOS 15.1以降に対応 ・ アカウント登録なしでも使えます
+        </p>
+        <div class="hero-stats" aria-label="フィドカの主な特徴">
+          <div class="hero-stat"><strong>約30秒</strong><span>距離・量・金額で給油記録</span></div>
+          <div class="hero-stat"><strong>km/L</strong><span>満タン法で実燃費を自動計算</span></div>
+          <div class="hero-stat"><strong>価格マップ</strong><span>近くのガソリン価格を比較</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <figure class="device">
+          <img src="./assets/screen-home.png" alt="フィドカのホーム画面。平均燃費、総走行距離、次回オイル交換、近くのガソリン価格、今月のクルマ費用が表示されています。" width="1047" height="1972" fetchpriority="high">
+        </figure>
+        <div class="float-card float-a">
+          <div class="ico" style="background:#E3ECFB;color:#2B6CE0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13v-2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8H3z"/><path d="M14 9h3l3 3v6h-2"/><circle cx="6.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>
           </div>
-          <div class="stat">
-            <strong>km/L</strong>
-            <span>満タン法で実燃費を自動計算</span>
+          給油を記録<div class="sub">30秒でかんたん入力</div>
+        </div>
+        <div class="float-card float-b">
+          <div class="ico" style="background:#FBEFD8;color:#B5811A;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.7-.7-2.5z"/></svg>
           </div>
-          <div class="stat">
-            <strong>地図</strong>
-            <span>近くのガソリン価格を比較</span>
-          </div>
+          オイル交換<div class="sub">あと 4,800 km</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- FEATURES -->
   <section class="section" id="features">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">記録を、あとから役立つ形に</p>
-        <h2>給油のたび、整備のたびに愛車の状態が見えてくる。</h2>
-        <p>フィドカは日本のカーオーナー向けに、円、km/L、車検やオイル交換の管理に合わせて作っています。</p>
+        <h2>給油のたび、整備のたびに<br>愛車の状態が見えてくる。</h2>
+        <p>フィドカは日本のカーオーナー向けに、円・km/L・車検やオイル交換の管理に合わせて作っています。</p>
       </div>
       <div class="feature-grid">
-        <article class="feature">
+        <article class="feature reveal">
+          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13v-2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8H3z"/><path d="M14 9h3l3 3v6h-2"/><circle cx="6.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></div>
           <h3>給油記録と燃費計算</h3>
-          <p>走行距離、給油量、金額を入れるだけ。満タン法で実燃費を自動計算し、履歴として残せます。</p>
+          <p>走行距離・給油量・金額を入れるだけ。満タン法で実燃費を自動計算し、履歴として残せます。</p>
         </article>
-        <article class="feature">
+        <article class="feature reveal">
+          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
           <h3>レシートから自動入力</h3>
-          <p>レシートを撮影して、油種、数量、合計金額などの入力を補助。手入力の手間を減らします。</p>
+          <p>レシートを撮影して、油種・数量・合計金額などの入力を補助。手入力の手間を減らします。</p>
         </article>
-        <article class="feature">
+        <article class="feature reveal">
+          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <h3>近くのガソリン価格</h3>
-          <p>現在地周辺の価格情報を地図で確認。レギュラー、ハイオク、軽油を切り替えて比較できます。</p>
+          <p>現在地周辺の価格情報を地図で確認。レギュラー・ハイオク・軽油を切り替えて比較できます。</p>
         </article>
-        <article class="feature">
+        <article class="feature reveal">
+          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.7-.7-2.5z"/></svg></div>
           <h3>整備とリマインド</h3>
-          <p>オイル交換、タイヤ、バッテリー、車検などを記録。次回目安を日付や距離で管理できます。</p>
+          <p>オイル交換・タイヤ・バッテリー・車検などを記録。次回目安を日付や距離で管理できます。</p>
         </article>
-        <article class="feature">
+        <article class="feature reveal">
+          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg></div>
           <h3>維持費レポート</h3>
-          <p>給油代と整備費を月ごとに集計。車にかかるお金の流れを見える化します。</p>
+          <p>給油代と整備費を月ごと・年ごとに集計。車にかかるお金の流れを見える化します。</p>
         </article>
-        <article class="feature">
+        <article class="feature reveal">
+          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10a4 4 0 0 0-.7-7.9A6 6 0 0 0 6 7a5 5 0 0 0-1 9.9"/><path d="M12 12v9M8.5 16.5 12 13l3.5 3.5"/></svg></div>
           <h3>複数台とクラウド同期</h3>
           <p>Pro / Pro+では複数台管理、CSVエクスポート、自動バックアップ、クラウド同期に対応します。</p>
         </article>
@@ -681,59 +148,37 @@
     </div>
   </section>
 
+  <!-- SHOWCASE -->
   <section class="section alt" aria-labelledby="screens-title">
     <div class="container showcase">
       <div>
         <p class="eyebrow">画面はシンプルに</p>
-        <h2 id="screens-title">毎回使うから、迷わず押せるUIに。</h2>
-        <p class="lead">ホームでは平均燃費と次の行動をすぐ確認。給油や整備の入力は、数字と必要項目に集中できるようにしています。</p>
+        <h2 id="screens-title" style="font-size:clamp(26px,3.4vw,38px);line-height:1.25;letter-spacing:-0.01em;margin-bottom:12px;">毎回使うから、<br>迷わず押せるUIに。</h2>
+        <p style="color:var(--muted);font-size:16px;margin:0;">ホームでは平均燃費と次の行動をすぐ確認。給油や整備の入力は、数字と必要項目に集中できるようにしています。</p>
         <div class="workflow">
-          <div class="step">
-            <div class="step-number">1</div>
-            <div>
-              <h3>ホームで状態を確認</h3>
-              <p>平均燃費、総走行距離、次の整備目安をまとめて表示します。</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <div>
-              <h3>給油・整備をすぐ記録</h3>
-              <p>よく使う記録ボタンを大きく配置し、履歴へもすぐ戻れます。</p>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <div>
-              <h3>あとから費用と燃費を見返す</h3>
-              <p>燃費や維持費の変化を見て、愛車の調子や出費を把握できます。</p>
-            </div>
-          </div>
+          <div class="step reveal"><div class="step-num">1</div><div><h3>ホームで状態を確認</h3><p>平均燃費、総走行距離、次の整備目安をまとめて表示します。</p></div></div>
+          <div class="step reveal"><div class="step-num">2</div><div><h3>給油・整備をすぐ記録</h3><p>よく使う記録ボタンを大きく配置し、履歴へもすぐ戻れます。</p></div></div>
+          <div class="step reveal"><div class="step-num">3</div><div><h3>あとから費用と燃費を見返す</h3><p>燃費や維持費の変化を見て、愛車の調子や出費を把握できます。</p></div></div>
         </div>
       </div>
       <div class="phone-strip" aria-label="フィドカのアプリ画面">
-        <figure class="phone">
-          <img src="./assets/screenshot-home.png" alt="フィドカのホーム画面。平均燃費と給油・整備の記録ボタンが表示されています。" width="1320" height="2868" loading="lazy">
-        </figure>
-        <figure class="phone">
-          <img src="./assets/screenshot-fuel.png" alt="フィドカの給油履歴画面。走行距離、給油量、金額、燃費が並んでいます。" width="1320" height="2868" loading="lazy">
-        </figure>
-        <figure class="phone">
-          <img src="./assets/screenshot-maintenance.png" alt="フィドカの整備記録画面。オイル交換などのメンテナンス記録を管理できます。" width="1320" height="2868" loading="lazy">
-        </figure>
+        <figure class="phone-shot reveal"><img src="./assets/screen-fuel.png" alt="フィドカの給油記録画面。金額・給油量・総走行距離・燃料単価を入力できます。" width="1047" height="2018" loading="lazy"></figure>
+        <figure class="phone-shot reveal"><img src="./assets/screen-home.png" alt="フィドカのホーム画面。平均燃費や今月のクルマ費用が並びます。" width="1047" height="1972" loading="lazy"></figure>
+        <figure class="phone-shot reveal"><img src="./assets/screen-map.png" alt="フィドカの近くのガソリン価格マップ。周辺の給油所を価格・距離で比較できます。" width="1047" height="2000" loading="lazy"></figure>
       </div>
     </div>
   </section>
 
+  <!-- MAP / RECEIPT -->
   <section class="section" id="map">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">新しいフィドカの情報</p>
-        <h2>ガソリン価格マップとレシートOCRで、入力も比較も軽く。</h2>
+        <p class="eyebrow">入力も比較も、もっと軽く</p>
+        <h2>ガソリン価格マップとレシートOCR。</h2>
         <p>給油記録をただ残すだけでなく、次にどこで入れるか、どれくらい使ったかまで見やすくします。</p>
       </div>
       <div class="split">
-        <article class="info-panel">
+        <article class="info-panel reveal">
           <div class="map-demo" aria-hidden="true">
             <div class="route"></div>
             <div class="pin one">169円/L<span>0.8km</span></div>
@@ -741,14 +186,14 @@
             <div class="pin three">175円/L<span>2.1km</span></div>
           </div>
           <h3 class="mini-title">近くの価格を地図で確認</h3>
-          <p>レギュラー、ハイオク、軽油を切り替え、価格が安い順・距離が近い順で探せます。店舗を選んで経路案内にも進めます。</p>
+          <p style="color:var(--muted);font-size:14.5px;margin:0;">レギュラー・ハイオク・軽油を切り替え、価格が安い順・距離が近い順で探せます。店舗を選んで経路案内にも進めます。</p>
           <ul class="bullet-list">
             <li>現在地周辺のガソリンスタンドを表示</li>
-            <li>価格、距離、営業状況を比較</li>
+            <li>価格・距離・営業状況を比較</li>
             <li>価格共有はアプリ内で有効にした場合のみ</li>
           </ul>
         </article>
-        <article class="info-panel">
+        <article class="info-panel reveal">
           <div class="receipt-demo" aria-hidden="true">
             <div class="receipt-paper">
               <div class="receipt-row"><span>油種</span><strong>レギュラー</strong></div>
@@ -759,7 +204,7 @@
             </div>
           </div>
           <h3 class="mini-title">レシート撮影で入力を補助</h3>
-          <p>カメラでレシートを撮ると、油種・数量・金額などを読み取り、給油記録へ反映しやすくします。</p>
+          <p style="color:var(--muted);font-size:14.5px;margin:0;">カメラでレシートを撮ると、油種・数量・金額などを読み取り、給油記録へ反映しやすくします。</p>
           <ul class="bullet-list">
             <li>手入力の打ち間違いを減らせる</li>
             <li>読み取り後に自分で確認して保存</li>
@@ -770,47 +215,57 @@
     </div>
   </section>
 
+  <!-- PLANS -->
   <section class="section alt" id="plans">
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">無料から使える</p>
         <h2>一台の記録から、複数台・同期まで。</h2>
-        <p>まずは無料で給油・整備を記録。必要になったらPro / Pro+でクラウド同期やエクスポートを使えます。</p>
+        <p>まずは無料で給油・整備を記録。必要になったら Pro / Pro+ でクラウド同期やエクスポートを。<strong style="color:var(--primary-strong)">Webからも登録・お支払いできます。</strong></p>
       </div>
       <div class="plan-grid">
-        <article class="plan">
+        <article class="plan reveal">
           <h3>Free</h3>
-          <div class="price">無料</div>
+          <div class="price">¥0</div>
+          <div class="price-note">ずっと無料</div>
           <ul>
             <li>給油・燃費・整備記録</li>
             <li>費用レポート</li>
             <li>レシートOCR</li>
             <li>ガソリン価格マップ</li>
           </ul>
+          <a class="btn btn-soft btn-block" href="./account.html?mode=signup">無料で始める</a>
         </article>
-        <article class="plan recommended">
+        <article class="plan featured reveal">
+          <span class="plan-tag">いちばん人気</span>
           <h3>Pro</h3>
-          <div class="price">2台まで</div>
+          <div class="price">2台<small> まで管理</small></div>
+          <div class="price-note">広告なし・クラウド同期つき</div>
           <ul>
             <li>広告非表示</li>
             <li>CSVエクスポート</li>
             <li>自動バックアップ</li>
             <li>クラウド同期</li>
           </ul>
+          <a class="btn btn-primary btn-block" href="./account.html?plan=pro">Proにアップグレード</a>
         </article>
-        <article class="plan">
+        <article class="plan reveal">
           <h3>Pro+</h3>
-          <div class="price">3台以上</div>
+          <div class="price">3台<small> 以上に</small></div>
+          <div class="price-note">家族用・仕事用の車も整理</div>
           <ul>
             <li>複数台の車両管理</li>
-            <li>Pro機能を利用可能</li>
+            <li>Pro機能をすべて利用可能</li>
             <li>家族用・仕事用の車も整理</li>
           </ul>
+          <a class="btn btn-soft btn-block" href="./account.html?plan=pro_plus">Pro+にアップグレード</a>
         </article>
       </div>
+      <p style="text-align:center;color:var(--muted);font-size:13px;margin:22px 0 0;">価格はアプリ内・Webの購入画面に表示されます。アプリで購入したProはWebでもそのままProとして使えます。</p>
     </div>
   </section>
 
+  <!-- FAQ -->
   <section class="section" id="faq">
     <div class="container">
       <div class="section-head">
@@ -818,33 +273,26 @@
         <h2>使い始める前に知っておきたいこと。</h2>
       </div>
       <div class="faq-list">
-        <details>
-          <summary>アカウント登録は必要ですか？</summary>
-          <p>無料機能はアカウント登録なしでも利用できます。クラウド同期や購入・復元など、一部機能ではログインが必要です。</p>
-        </details>
-        <details>
-          <summary>価格共有を使わないことはできますか？</summary>
-          <p>できます。ガソリン価格の共有は、対応バージョンでアプリ内から明示的に有効にした場合のみ利用されます。</p>
-        </details>
-        <details>
-          <summary>レシート画像はサーバーへ送られますか？</summary>
-          <p>レシート画像、OCR全文、車の写真、整備画像はクラウド同期や価格共有の対象外です。詳しくはプライバシーポリシーをご確認ください。</p>
-        </details>
-        <details>
-          <summary>日本以外でも使えますか？</summary>
-          <p>フィドカは日本向けに、円、km/L、日本語表示を前提として作っています。</p>
-        </details>
+        <details><summary>アカウント登録は必要ですか？</summary><p>無料機能はアカウント登録なしでも利用できます。クラウド同期や購入・復元など、一部機能ではログインが必要です。Webからもメールアドレスで登録・ログインできます。</p></details>
+        <details><summary>Webで契約したProはアプリでも使えますか？</summary><p>はい。Webとアプリは同じアカウントで購読状態を共有します。Webで登録したPro / Pro+は、同じメールアドレスでログインすればアプリでも有効になります。</p></details>
+        <details><summary>価格共有を使わないことはできますか？</summary><p>できます。ガソリン価格の共有は、対応バージョンでアプリ内から明示的に有効にした場合のみ利用されます。</p></details>
+        <details><summary>レシート画像はサーバーへ送られますか？</summary><p>レシート画像、OCR全文、車の写真、整備画像はクラウド同期や価格共有の対象外です。詳しくはプライバシーポリシーをご確認ください。</p></details>
+        <details><summary>日本以外でも使えますか？</summary><p>フィドカは日本向けに、円・km/L・日本語表示を前提として作っています。</p></details>
       </div>
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="cta-band" aria-labelledby="download-title">
     <div class="cta-inner">
       <div>
         <h2 id="download-title">愛車の記録を、今日からフィドカに。</h2>
         <p>給油のたびに少しずつ、あなたの車の履歴が育っていきます。</p>
       </div>
-      <a class="app-store-link" href="https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740" target="_blank" rel="noopener noreferrer">App Storeで見る</a>
+      <div class="cta-actions">
+        <a class="btn btn-dark" href="https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740" target="_blank" rel="noopener noreferrer">App Storeで入手</a>
+        <a class="btn btn-ghost" href="./account.html?mode=signup">Webで無料登録</a>
+      </div>
     </div>
   </section>
 </main>
@@ -852,8 +300,29 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <span>© 2026 フィドカ ― fido(イタリア語で「忠実な」)+ car</span>
-    <span><a href="./privacy.html">プライバシーポリシー</a> / <a href="mailto:support@fidoca.jp">support@fidoca.jp</a></span>
+    <span class="footer-links">
+      <a href="./account.html">ログイン</a>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <a href="mailto:support@fidoca.jp">support@fidoca.jp</a>
+    </span>
   </div>
 </footer>
+
+<script>
+  // スクロールで各要素をふわっと表示
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || !els.length) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 </body>
 </html>
