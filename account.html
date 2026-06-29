@@ -101,7 +101,7 @@
     <div class="divider">または</div>
     <button class="btn btn-ghost btn-block" id="magicBtn" type="button">パスワードなしでログイン(メールリンク)</button>
 
-    <p class="small-note">続行することで、<a href="./terms.html">利用規約</a>と<a href="./privacy.html">プライバシーポリシー</a>に同意したものとみなされます。<br>アプリで購入したPro / Pro+は、同じメールでログインするとWebでも有効です。</p>
+    <p class="small-note">続行することで、<a href="./terms.html">利用規約</a>と<a href="./privacy.html">プライバシーポリシー</a>に同意したものとみなされます。<br>アプリの購読状況は同じメールのログインでWebでも確認できます。Webで記録を使えるのは Pro+ のみです。</p>
   </section>
 
   <!-- 認証後 -->
@@ -115,9 +115,9 @@
 
     <a class="btn btn-primary btn-block" id="openAppBtn" href="./app/" style="display:flex;align-items:center;justify-content:center;gap:9px;min-height:54px;font-size:16px;margin-bottom:8px;">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-      アプリを開く（記録をつける）
+      <span id="openAppLabel">アプリを開く</span>
     </a>
-    <p class="status-meta" id="openAppNote" style="text-align:center;margin:0 0 22px;">iOS / Android アプリと同じ画面で、車両・給油・整備・費用を記録できます。</p>
+    <p class="status-meta" id="openAppNote" style="text-align:center;margin:0 0 22px;">Webアプリで車両・給油・整備・費用を記録できます。</p>
 
     <div class="status-card">
       <div class="row">
@@ -291,9 +291,13 @@
     }
     badge.className = 'plan-badge ' + tier;
     badge.textContent = planLabel(tier) + ' プラン';
-    $('openAppNote').textContent = tier === 'pro_plus'
-      ? 'Pro+ の記録はクラウド同期され、アプリと同じデータをWebでも編集できます。'
-      : 'iOS / Android アプリと同じ画面で、車両・給油・整備・費用を記録できます。';
+    if (tier === 'pro_plus') {
+      $('openAppLabel').textContent = 'アプリを開く（記録をつける）';
+      $('openAppNote').textContent = 'Pro+ の記録はクラウド同期され、アプリと同じデータをWebでも編集できます。';
+    } else {
+      $('openAppLabel').textContent = 'アプリを試す（デモ）';
+      $('openAppNote').textContent = 'Webアプリはお試しのデモ表示です。自分の記録をWebでも使うには Pro+ が必要です。';
+    }
     if (tier === 'free') {
       meta.textContent = '無料プランをご利用中です。Proで広告非表示・CSV・2台管理、Pro+でクラウド同期や3台以上の管理が使えます。';
     } else {
