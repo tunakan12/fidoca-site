@@ -203,8 +203,18 @@
           options: { emailRedirectTo: location.origin + '/account.html' },
         });
         if (error) throw error;
-        if (!data.session) {
-          showMsg(authMsg, 'ok', '確認メールを送信しました。メール内のリンクを開くと登録が完了します。');
+        // 確認メールON時、既に登録済み(確認済み)のメールは GoTrue がエラーではなく
+        // identities が空のフェイクユーザーを返す。この場合は確認メールも送られないため、
+        // 「送信しました」とは出さず、登録済みである旨を案内してログインへ誘導する。
+        const alreadyRegistered = data.user
+          && Array.isArray(data.user.identities)
+          && data.user.identities.length === 0;
+        if (alreadyRegistered) {
+          setMode('login');
+          emailEl.value = email;
+          showMsg(authMsg, 'info', 'このメールアドレスは登録済みです。ログインをお試しください。パスワードが分からない場合は「パスワードなしでログイン(メールリンク)」をご利用ください。');
+        } else if (!data.session) {
+          showMsg(authMsg, 'ok', '確認メールを送信しました。メール内のリンクを開くと登録が完了します。届かない場合は迷惑メールフォルダもご確認ください。');
         }
         // session があれば onAuthStateChange が画面を切り替える
       } else {
@@ -242,7 +252,7 @@
     if (m.includes('invalid login')) return 'メールアドレスまたはパスワードが正しくありません。';
     if (m.includes('already registered') || m.includes('already been registered')) return 'このメールアドレスは登録済みです。ログインをお試しください。';
     if (m.includes('email not confirmed')) return 'メールアドレスの確認が完了していません。確認メールのリンクを開いてください。';
-    if (m.includes('rate limit') || m.includes('too many')) return '試行回数が多すぎます。しばらく待ってから再度お試しください。';
+    if (m.includes('rate limit') || m.includes('too many') || m.includes('for security purposes') || m.includes('after')) return 'メール送信の間隔が短すぎます。しばらく待ってから再度お試しください。（先ほどのメールが届いていないか、迷惑メールフォルダもご確認ください）';
     if (m.includes('password')) return 'パスワードは6文字以上で入力してください。';
     return 'エラーが発生しました: ' + (err && err.message ? err.message : '不明なエラー');
   }
