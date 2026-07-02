@@ -36,7 +36,11 @@
   "downloadUrl": "https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740"
 }
 </script>
-<link rel="stylesheet" href="./assets/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/home.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <a class="skip-link" href="#content">本文へ移動</a>
@@ -55,7 +59,7 @@
     </div>
     <div class="nav-actions">
       <a class="nav-login" href="./account.html">ログイン</a>
-      <a class="btn btn-primary" href="./account.html?mode=signup" style="min-height:42px;padding:9px 18px;font-size:14px;">無料で始める</a>
+      <a class="btn btn-primary btn-nav" href="./account.html?mode=signup">無料で始める</a>
     </div>
   </nav>
 </header>
@@ -90,13 +94,13 @@
           <img src="./assets/screen-home.webp" alt="フィドカのホーム画面。平均燃費、総走行距離、次回オイル交換、近くのガソリン価格、今月のクルマ費用が表示されています。" width="760" height="1431" fetchpriority="high">
         </figure>
         <div class="float-card float-a">
-          <div class="ico" style="background:#E3ECFB;color:#2B6CE0;">
+          <div class="ico ico-fuel">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13v-2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8H3z"/><path d="M14 9h3l3 3v6h-2"/><circle cx="6.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>
           </div>
           給油を記録<div class="sub">30秒でかんたん入力</div>
         </div>
         <div class="float-card float-b">
-          <div class="ico" style="background:#FBEFD8;color:#B5811A;">
+          <div class="ico ico-service">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.7-.7-2.5z"/></svg>
           </div>
           オイル交換<div class="sub">あと 4,800 km</div>
@@ -115,32 +119,32 @@
       </div>
       <div class="feature-grid">
         <article class="feature reveal">
-          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13v-2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8H3z"/><path d="M14 9h3l3 3v6h-2"/><circle cx="6.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></div>
+          <div class="feature-ico f-fuel"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13v-2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8H3z"/><path d="M14 9h3l3 3v6h-2"/><circle cx="6.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></div>
           <h3>給油記録と燃費計算</h3>
           <p>走行距離・給油量・金額を入れるだけ。満タン法で実燃費を自動計算し、履歴として残せます。</p>
         </article>
         <article class="feature reveal">
-          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
+          <div class="feature-ico f-receipt"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
           <h3>レシートから自動入力</h3>
           <p>レシートを撮影して、油種・数量・合計金額などの入力を補助。手入力の手間を減らします。</p>
         </article>
         <article class="feature reveal">
-          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="feature-ico f-map"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <h3>近くのガソリン価格</h3>
           <p>現在地周辺の価格情報を地図で確認。レギュラー・ハイオク・軽油を切り替えて比較できます。</p>
         </article>
         <article class="feature reveal">
-          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.7-.7-2.5z"/></svg></div>
+          <div class="feature-ico f-service"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-.7-.7-2.5z"/></svg></div>
           <h3>整備とリマインド</h3>
           <p>オイル交換・タイヤ・バッテリー・車検などを記録。次回目安を日付や距離で管理できます。</p>
         </article>
         <article class="feature reveal">
-          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg></div>
+          <div class="feature-ico f-cost"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg></div>
           <h3>維持費レポート</h3>
           <p>給油代と整備費を月ごと・年ごとに集計。車にかかるお金の流れを見える化します。</p>
         </article>
         <article class="feature reveal">
-          <div class="feature-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10a4 4 0 0 0-.7-7.9A6 6 0 0 0 6 7a5 5 0 0 0-1 9.9"/><path d="M12 12v9M8.5 16.5 12 13l3.5 3.5"/></svg></div>
+          <div class="feature-ico f-sync"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10a4 4 0 0 0-.7-7.9A6 6 0 0 0 6 7a5 5 0 0 0-1 9.9"/><path d="M12 12v9M8.5 16.5 12 13l3.5 3.5"/></svg></div>
           <h3>複数台とクラウド同期</h3>
           <p>Proでは2台までの管理とCSVエクスポート、Pro+では3台以上の管理とクラウド同期に対応します。</p>
         </article>
@@ -153,8 +157,8 @@
     <div class="container showcase">
       <div>
         <p class="eyebrow">画面はシンプルに</p>
-        <h2 id="screens-title" style="font-size:clamp(26px,3.4vw,38px);line-height:1.25;letter-spacing:-0.01em;margin-bottom:12px;">毎回使うから、<br>迷わず押せるUIに。</h2>
-        <p style="color:var(--muted);font-size:16px;margin:0;">ホームでは平均燃費と次の行動をすぐ確認。給油や整備の入力は、数字と必要項目に集中できるようにしています。</p>
+        <h2 id="screens-title" class="showcase-title">毎回使うから、<br>迷わず押せるUIに。</h2>
+        <p class="showcase-lead">ホームでは平均燃費と次の行動をすぐ確認。給油や整備の入力は、数字と必要項目に集中できるようにしています。</p>
         <div class="workflow">
           <div class="step reveal"><div class="step-num">1</div><div><h3>ホームで状態を確認</h3><p>平均燃費、総走行距離、次の整備目安をまとめて表示します。</p></div></div>
           <div class="step reveal"><div class="step-num">2</div><div><h3>給油・整備をすぐ記録</h3><p>よく使う記録ボタンを大きく配置し、履歴へもすぐ戻れます。</p></div></div>
@@ -181,7 +185,7 @@
         <article class="info-panel reveal">
           <div class="map-demo" aria-hidden="true">
             <div class="route"></div>
-            <div class="pin one">169円/L<span>0.8km</span></div>
+            <div class="pin one"><span class="pin-badge">最安</span>169円/L<span>0.8km</span></div>
             <div class="pin two">172円/L<span>営業中</span></div>
             <div class="pin three">175円/L<span>2.1km</span></div>
           </div>
@@ -221,7 +225,7 @@
       <div class="section-head">
         <p class="eyebrow">無料から使える</p>
         <h2>一台の記録から、複数台・同期まで。</h2>
-        <p>まずは無料で給油・整備を記録。必要になったら Proで広告非表示やCSV、Pro+でクラウド同期を。<strong style="color:var(--primary-strong)">Webからも登録・お支払いできます。</strong></p>
+        <p>まずは無料で給油・整備を記録。必要になったら Proで広告非表示やCSV、Pro+でクラウド同期を。<strong class="plan-strong">Webからも登録・お支払いできます。</strong></p>
       </div>
       <div class="plan-grid">
         <article class="plan reveal">
@@ -262,7 +266,7 @@
           <a class="btn btn-soft btn-block" href="./account.html?plan=pro_plus">Pro+にアップグレード</a>
         </article>
       </div>
-      <p style="text-align:center;color:var(--muted);font-size:13px;margin:22px 0 0;">表示はWeb価格（税込）です。App Storeでの価格は購入画面に表示され、Web価格と異なる場合があります。アプリで購入したPro / Pro+はWebでも同じプランとして使えます。</p>
+      <p class="plan-fineprint">表示はWeb価格（税込）です。App Storeでの価格は購入画面に表示され、Web価格と異なる場合があります。アプリで購入したPro / Pro+はWebでも同じプランとして使えます。</p>
     </div>
   </section>
 
