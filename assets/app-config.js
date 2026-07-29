@@ -23,5 +23,7 @@ window.FIDOCA_CONFIG = {
 
   APP_STORE_URL:
     'https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740',
+  GOOGLE_PLAY_URL:
+    'https://play.google.com/store/apps/details?id=com.shimasaki.fidoca&hl=ja',
   SUPPORT_EMAIL: 'support@fidoca.jp',
 };
