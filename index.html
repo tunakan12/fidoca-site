@@ -30,12 +30,13 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "SoftwareApplication",
+      "@type": ["SoftwareApplication", "MobileApplication"],
       "@id": "https://fidoca.jp/#app",
       "name": "フィドカ",
       "alternateName": "Fidoca",
       "operatingSystem": "iOS, Android",
       "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "車両管理・燃費記録",
       "description": "車・バイクの給油・燃費・整備・車検・維持費・ドライブ記録をまとめて管理できる日本向け車両管理アプリ。ガソリン車、ディーゼル、ハイブリッド、PHEV、EVに対応し、充電記録と電費、AIによる整備書類読み取り、ガソリン価格マップも利用できます。",
       "url": "https://fidoca.jp/",
       "image": "https://fidoca.jp/fidoca-icon.png",
@@ -47,6 +48,10 @@
       "featureList": "給油記録, レシート読み取り, 燃費自動計算, EV・PHEV充電記録と電費, 整備書類のAI読み取り, 車検・整備リマインド, ガソリン価格マップ, 費用レポート, ドライブ記録, PDF・CSV出力, クラウド同期",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "無料プランあり。Pro(月500円/年4,900円)、Pro+(月900円/年8,900円)のサブスクリプションを提供。" },
       "downloadUrl": [
+        "https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740",
+        "https://play.google.com/store/apps/details?id=com.shimasaki.fidoca&hl=ja"
+      ],
+      "installUrl": [
         "https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740",
         "https://play.google.com/store/apps/details?id=com.shimasaki.fidoca&hl=ja"
       ],
@@ -117,7 +122,17 @@
         {
           "@type": "Question",
           "name": "Android版はありますか?",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい。iOS版をApp Store、Android版をGoogle Playで配信中です。" }
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。Android版はGoogle Playで配信しています。ストアで「フィドカ」と検索するか、https://play.google.com/store/apps/details?id=com.shimasaki.fidoca からインストールできます。iOS版はApp Storeで配信中で、記録できる内容や燃費の計算方法はiOSとAndroidで共通です。" }
+        },
+        {
+          "@type": "Question",
+          "name": "燃費はどうやって計算されますか?",
+          "acceptedAnswer": { "@type": "Answer", "text": "満タン法で計算します。総走行距離と給油量から実燃費(km/L)を自動計算し、満タンまでの間に入れた部分給油は合算して扱います。燃費は数値として保存せず記録から都度計算するため、あとから走行距離や給油量を直すと燃費も再計算されます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "他の燃費記録アプリとの違いは何ですか?",
+          "acceptedAnswer": { "@type": "Answer", "text": "給油と燃費だけでなく、整備・車検・保険・自動車税までを同じ車両に紐づけて管理できます。給油レシートの読み取りに加えて整備明細書・請求書のAI読み取りに対応し、周辺のガソリン価格を地図で比較できる点も特徴です。EV/PHEVの充電記録と電費(km/kWh)にも対応しています。" }
         },
         {
           "@type": "Question",
@@ -493,7 +508,9 @@
         <details><summary>機種変更してもデータは引き継げますか?</summary><p>データのバックアップ機能で、車両・給油・整備の記録を1つのファイルに書き出して新しい端末で復元できます。Pro+なら自動バックアップとクラウド同期により、新しい端末でログインするだけで記録を引き継げます。</p></details>
         <details><summary>Webで契約したProはアプリでも使えますか?</summary><p>はい。Webとアプリは同じアカウントで購読状態を共有します。同じメールアドレスでログインすると、アプリでも同じプランが有効になります。アプリ内で購入したPro / Pro+も同様にWebで使えます。</p></details>
         <details><summary>レシートや整備書類の画像はサーバーへ送られますか?</summary><p>レシート画像と読み取りテキスト全文は、通常のクラウド同期や価格共有では送信されません。AI読み取りを実行した場合のみ、その都度選択した写真・PDFを処理のためサーバーへ送信します。ガソリン価格の共有も初期状態ではOFFで、アプリ内から明示的に有効にした場合のみ利用されます。詳しくはプライバシーポリシーをご覧ください。</p></details>
-        <details><summary>Android版はありますか?</summary><p>はい。iOS版をApp Store、Android版をGoogle Playで配信中です。</p></details>
+        <details><summary>Android版はありますか?</summary><p>はい。Android版は<a href="https://play.google.com/store/apps/details?id=com.shimasaki.fidoca&amp;hl=ja" target="_blank" rel="noopener noreferrer">Google Play</a>で配信しています。ストアで「フィドカ」と検索してもインストールできます。iOS版はApp Storeで配信中で、記録できる内容や燃費の計算方法はiOSとAndroidで共通です。</p></details>
+        <details><summary>燃費はどうやって計算されますか?</summary><p>満タン法で計算します。総走行距離と給油量から実燃費(km/L)を自動計算し、満タンまでの間に入れた部分給油は合算して扱います。燃費は数値として保存せず記録から都度計算するため、あとから走行距離や給油量を直すと燃費も再計算されます。</p></details>
+        <details><summary>他の燃費記録アプリとの違いは何ですか?</summary><p>給油と燃費だけでなく、整備・車検・保険・自動車税までを同じ車両に紐づけて管理できます。給油レシートの読み取りに加えて整備明細書・請求書のAI読み取りに対応し、周辺のガソリン価格を地図で比較できる点も特徴です。EV/PHEVの充電記録と電費(km/kWh)にも対応しています。</p></details>
         <details><summary>日本以外でも使えますか?</summary><p>フィドカは日本向けに、円・km/L・km/kWh・日本語表示を前提として作っています。</p></details>
       </div>
     </div>
