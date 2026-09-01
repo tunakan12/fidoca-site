@@ -46,6 +46,11 @@
 ## リンク
 
 - [公式サイト](https://fidoca.jp/)
+- [燃費管理アプリの選び方](https://fidoca.jp/guide/fuel-economy-app.html): 満タン法、部分給油、レシート読み取り、EV/PHEV対応など、燃費・給油記録アプリを選ぶ6つの基準。
+- [車の整備記録アプリの選び方](https://fidoca.jp/guide/car-maintenance-app.html): 整備履歴、明細書、日付・走行距離リマインド、車検をまとめて管理するための基準。
+- [車の維持費管理アプリの選び方](https://fidoca.jp/guide/car-expense-app.html): 給油・充電・整備・車検・保険・自動車税を月別・年間で把握する方法。
+- [ガソリンレシートを読み取れるアプリ](https://fidoca.jp/guide/gas-receipt-app.html): レシートから給油日・油種・給油量・単価・金額・給油所を入力し、燃費記録につなげる方法。
+- [EV・PHEVの充電記録アプリの選び方](https://fidoca.jp/guide/ev-charge-record-app.html): 充電量・電気代・残量・EV走行距離・電費を記録し、給油と充電を一元管理する方法。
 - [プライバシーポリシー](https://fidoca.jp/privacy.html)
 - [利用規約](https://fidoca.jp/terms.html)
 - [特定商取引法に基づく表記](https://fidoca.jp/commerce.html)
