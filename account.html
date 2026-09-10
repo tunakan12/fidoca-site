@@ -33,6 +33,10 @@
   .small-note a { color: var(--primary-strong); font-weight: 700; }
   .back-home { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; font-weight: 700; margin-bottom: 18px; }
   .back-home:hover { color: var(--primary); }
+  .forgot-row { text-align: right; margin: -4px 0 16px; }
+  .forgot-row.center { text-align: center; margin: 16px 0 0; }
+  .link-btn { border: none; background: none; padding: 4px 0; font: inherit; font-size: 13px; font-weight: 700; color: var(--primary-strong); cursor: pointer; }
+  .link-btn:hover { text-decoration: underline; }
 
   /* dashboard */
   .acc-head { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
@@ -91,17 +95,44 @@
         <label for="email">メールアドレス</label>
         <input id="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
       </div>
-      <div class="field">
+      <div class="field" id="passwordField">
         <label for="password">パスワード</label>
         <input id="password" type="password" autocomplete="current-password" placeholder="6文字以上" minlength="6" required>
       </div>
+      <p class="forgot-row" id="forgotRow"><button class="link-btn" id="forgotLink" type="button">パスワードをお忘れの方</button></p>
       <button class="btn btn-primary btn-block" id="authSubmit" type="submit">ログイン</button>
     </form>
 
-    <div class="divider">または</div>
-    <button class="btn btn-ghost btn-block" id="magicBtn" type="button">パスワードなしでログイン(メールリンク)</button>
+    <p class="forgot-row center hidden" id="backRow"><button class="link-btn" id="backToLogin" type="button">← ログインに戻る</button></p>
+
+    <div id="altLogin">
+      <div class="divider">または</div>
+      <button class="btn btn-ghost btn-block" id="magicBtn" type="button">パスワードなしでログイン(メールリンク)</button>
+    </div>
 
     <p class="small-note">続行することで、<a href="./terms.html">利用規約</a>と<a href="./privacy.html">プライバシーポリシー</a>に同意したものとみなされます。<br>アプリの購読状況は同じメールのログインでWebでも確認できます。Webで記録を使えるのは Pro+ のみです。</p>
+  </section>
+
+  <!-- パスワード再設定メールのリンクから戻ってきたとき -->
+  <section class="panel hidden" id="recoveryPanel">
+    <h1>新しいパスワードを設定</h1>
+    <p class="sub"><span id="recoveryEmail"></span> の新しいパスワードを入力してください。</p>
+
+    <div id="recoveryMsg"></div>
+
+    <form id="recoveryForm" novalidate>
+      <input type="email" id="recoveryUsername" autocomplete="username" class="hidden" tabindex="-1" aria-hidden="true">
+      <div class="field">
+        <label for="newPassword">新しいパスワード</label>
+        <input id="newPassword" type="password" autocomplete="new-password" placeholder="6文字以上" minlength="6" required>
+      </div>
+      <div class="field">
+        <label for="newPassword2">新しいパスワード（確認）</label>
+        <input id="newPassword2" type="password" autocomplete="new-password" placeholder="もう一度入力" minlength="6" required>
+      </div>
+      <button class="btn btn-primary btn-block" id="recoverySubmit" type="submit">パスワードを変更する</button>
+    </form>
+    <p class="forgot-row center"><button class="link-btn" id="recoverySkip" type="button">変更せずにマイアカウントへ</button></p>
   </section>
 
   <!-- 認証後 -->
@@ -160,6 +191,9 @@
   import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.4';
 
   const CFG = window.FIDOCA_CONFIG;
+  // detectSessionInUrl がハッシュを消す前に、再設定リンクからの遷移かどうかを控えておく。
+  const initialHash = new URLSearchParams(location.hash.replace(/^#/, ''));
+  let recoveryMode = initialHash.get('type') === 'recovery';
   const supabase = createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY, {
     auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
   });
@@ -177,27 +211,68 @@
   const pendingPlan = (params.get('plan') === 'pro' || params.get('plan') === 'pro_plus') ? params.get('plan') : null;
 
   function showMsg(box, type, html) { box.innerHTML = html ? `<div class="msg ${type}">${html}</div>` : ''; }
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const MODE_TEXT = {
+    login: { title: 'ログイン', sub: 'メールアドレスでフィドカにログインします。', submit: 'ログイン' },
+    signup: { title: '新規登録', sub: 'メールアドレスでフィドカのアカウントを作成します。', submit: '無料で登録する' },
+    forgot: { title: 'パスワードの再設定', sub: '登録したメールアドレスに、新しいパスワードを設定するためのリンクを送ります。', submit: '再設定メールを送る' },
+  };
 
   function setMode(next) {
     mode = next;
-    const isSignup = mode === 'signup';
+    const isSignup = mode === 'signup', isForgot = mode === 'forgot';
     tabSignup.classList.toggle('active', isSignup);
-    tabLogin.classList.toggle('active', !isSignup);
-    $('authTitle').textContent = isSignup ? '新規登録' : 'ログイン';
-    $('authSub').textContent = isSignup ? 'メールアドレスでフィドカのアカウントを作成します。' : 'メールアドレスでフィドカにログインします。';
-    authSubmit.textContent = isSignup ? '無料で登録する' : 'ログイン';
+    tabLogin.classList.toggle('active', mode === 'login');
+    $('authTitle').textContent = MODE_TEXT[mode].title;
+    $('authSub').textContent = MODE_TEXT[mode].sub;
+    authSubmit.textContent = MODE_TEXT[mode].submit;
     passwordEl.setAttribute('autocomplete', isSignup ? 'new-password' : 'current-password');
+    document.querySelector('.seg').classList.toggle('hidden', isForgot);
+    $('passwordField').classList.toggle('hidden', isForgot);
+    $('forgotRow').classList.toggle('hidden', mode !== 'login');
+    $('altLogin').classList.toggle('hidden', isForgot);
+    $('backRow').classList.toggle('hidden', !isForgot);
     showMsg(authMsg, '', '');
   }
   tabLogin.addEventListener('click', () => setMode('login'));
   tabSignup.addEventListener('click', () => setMode('signup'));
+  $('forgotLink').addEventListener('click', () => { setMode('forgot'); emailEl.focus(); });
+  $('backToLogin').addEventListener('click', () => setMode('login'));
   setMode(mode);
+
+  // 期限切れ・使用済みのメールリンクから戻ってきた場合(#error_code=otp_expired など)
+  if (initialHash.get('error_code') || initialHash.get('error')) {
+    const code = initialHash.get('error_code') || '';
+    showMsg(authMsg, 'err', code === 'otp_expired'
+      ? 'メールのリンクの有効期限が切れているか、すでに使用されています。お手数ですが、もう一度メールを送信してください。'
+      : 'リンクを確認できませんでした: ' + esc(initialHash.get('error_description') || code));
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+
+  // ---- パスワード再設定メールの送信 ----
+  async function sendResetEmail(email) {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: location.origin + '/account.html',
+    });
+    if (error) throw error;
+    showMsg(authMsg, 'ok', esc(email) + ' 宛に再設定用のリンクを送信しました。メール内の「パスワードを再設定する」を開き、新しいパスワードを設定してください。届かない場合は迷惑メールフォルダもご確認ください。');
+  }
 
   // ---- メール+パスワード ----
   authForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = emailEl.value.trim();
     const password = passwordEl.value;
+    if (mode === 'forgot') {
+      if (!email) { showMsg(authMsg, 'err', 'メールアドレスを入力してください。'); emailEl.focus(); return; }
+      authSubmit.disabled = true;
+      authSubmit.innerHTML = '<span class="spinner"></span>';
+      try { await sendResetEmail(email); }
+      catch (err) { showMsg(authMsg, 'err', translateError(err)); }
+      finally { authSubmit.disabled = false; authSubmit.textContent = MODE_TEXT.forgot.submit; }
+      return;
+    }
     if (!email || password.length < 6) { showMsg(authMsg, 'err', 'メールアドレスと6文字以上のパスワードを入力してください。'); return; }
     authSubmit.disabled = true;
     const original = authSubmit.textContent;
@@ -218,7 +293,7 @@
         if (alreadyRegistered) {
           setMode('login');
           emailEl.value = email;
-          showMsg(authMsg, 'info', 'このメールアドレスは登録済みです。ログインをお試しください。パスワードが分からない場合は「パスワードなしでログイン(メールリンク)」をご利用ください。');
+          showMsg(authMsg, 'info', 'このメールアドレスは登録済みです。ログインをお試しください。パスワードが分からない場合は「パスワードをお忘れの方」から再設定するか、「パスワードなしでログイン(メールリンク)」をご利用ください。');
         } else if (!data.session) {
           showMsg(authMsg, 'ok', '確認メールを送信しました。メール内のリンクを開くと登録が完了します。届かない場合は迷惑メールフォルダもご確認ください。');
         }
@@ -245,7 +320,7 @@
         email, options: { emailRedirectTo: location.origin + '/account.html' },
       });
       if (error) throw error;
-      showMsg(authMsg, 'ok', email + ' にログイン用リンクを送信しました。メールを開いてリンクをタップしてください。');
+      showMsg(authMsg, 'ok', esc(email) + ' にログイン用リンクを送信しました。メールを開いてリンクをタップしてください。');
     } catch (err) {
       showMsg(authMsg, 'err', translateError(err));
     } finally {
@@ -255,7 +330,9 @@
 
   function translateError(err) {
     const m = (err && err.message ? err.message : '').toLowerCase();
-    if (m.includes('invalid login')) return 'メールアドレスまたはパスワードが正しくありません。';
+    if (m.includes('invalid login')) return 'メールアドレスまたはパスワードが正しくありません。パスワードを忘れた場合は「パスワードをお忘れの方」から再設定できます。';
+    if (m.includes('different from the old')) return '現在と同じパスワードは設定できません。別のパスワードを入力してください。';
+    if (m.includes('session missing') || m.includes('session_not_found')) return '再設定の有効期限が切れました。お手数ですが、もう一度再設定メールを送信してください。';
     if (m.includes('already registered') || m.includes('already been registered')) return 'このメールアドレスは登録済みです。ログインをお試しください。';
     if (m.includes('email not confirmed')) return 'メールアドレスの確認が完了していません。確認メールのリンクを開いてください。';
     if (m.includes('rate limit') || m.includes('too many') || m.includes('for security purposes') || m.includes('after')) return 'メール送信の間隔が短すぎます。しばらく待ってから再度お試しください。（先ほどのメールが届いていないか、迷惑メールフォルダもご確認ください）';
@@ -268,6 +345,7 @@
 
   async function renderDashboard(user) {
     authPanel.classList.add('hidden');
+    $('recoveryPanel').classList.add('hidden');
     dashPanel.classList.remove('hidden');
     $('navSignOut').classList.remove('hidden');
     $('userEmail').textContent = user.email || '(メール未設定)';
@@ -365,13 +443,56 @@
   $('signOutBtn').addEventListener('click', signOut);
   $('navSignOut').addEventListener('click', signOut);
 
-  // ---- 初期化 ----
-  supabase.auth.onAuthStateChange((_event, session) => {
+  // ---- 新しいパスワードの設定(再設定リンク経由) ----
+  function renderRecovery(user) {
+    authPanel.classList.add('hidden');
+    dashPanel.classList.add('hidden');
+    $('recoveryPanel').classList.remove('hidden');
+    $('navSignOut').classList.remove('hidden');
+    $('recoveryEmail').textContent = user.email || 'アカウント';
+    $('recoveryUsername').value = user.email || '';
+    $('newPassword').focus();
+  }
+
+  $('recoveryForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const box = $('recoveryMsg'), btn = $('recoverySubmit');
+    const pw = $('newPassword').value, pw2 = $('newPassword2').value;
+    if (pw.length < 6) { showMsg(box, 'err', 'パスワードは6文字以上で入力してください。'); return; }
+    if (pw !== pw2) { showMsg(box, 'err', '確認用のパスワードが一致しません。'); return; }
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>';
+    try {
+      const { data, error } = await supabase.auth.updateUser({ password: pw });
+      if (error) throw error;
+      recoveryMode = false;
+      await renderDashboard(data.user);
+      showMsg(dashMsg, 'ok', 'パスワードを変更しました。次回からは新しいパスワードでログインできます（アプリも同じパスワードです）。');
+    } catch (err) {
+      showMsg(box, 'err', translateError(err));
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'パスワードを変更する';
+    }
+  });
+
+  $('recoverySkip').addEventListener('click', async () => {
+    recoveryMode = false;
+    const { data: { session } } = await supabase.auth.getSession();
     if (session && session.user) renderDashboard(session.user);
+    else location.href = './account.html';
+  });
+
+  // ---- 初期化 ----
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'PASSWORD_RECOVERY') recoveryMode = true;
+    if (!session || !session.user) return;
+    if (recoveryMode) renderRecovery(session.user);
+    else renderDashboard(session.user);
   });
   (async () => {
     const { data: { session } } = await supabase.auth.getSession();
-    if (session && session.user) renderDashboard(session.user);
+    if (session && session.user) (recoveryMode ? renderRecovery : renderDashboard)(session.user);
     else if (pendingPlan) { setMode('signup'); showMsg(authMsg, 'info', 'アップグレードするには、まずログインまたは新規登録してください。'); }
   })();
 </script>
