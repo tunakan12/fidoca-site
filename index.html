@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>燃費・給油記録アプリ フィドカ｜レシート読み取り・整備・車検管理</title>
-<meta name="description" content="フィドカは車・バイク対応の記録アプリ。給油・燃費・整備・車検・維持費をまとめて記録し、ドライブの写真・動画は友達や「みんな」とドライブSNSでシェア。EV/PHEVの充電と電費、AIによる整備書類の読み取り、ガソリン価格マップ、PDF・CSV出力、クラウド同期に対応。基本無料で今日から始められます。">
-<meta name="keywords" content="フィドカ,車管理アプリ,バイク管理アプリ,ドライブSNS,ドライブ記録,ツーリング,給油記録,燃費記録,燃費計算,ガソリン価格,レシート読み取り,整備記録,車検,オイル交換,メンテナンス,AI読み取り,EV,PHEV,電費,充電記録,維持費,費用レポート,PDF,CSV,カーライフ">
+<meta name="description" content="フィドカは日本向けの車・バイク記録アプリ。給油レシートを撮って燃費を自動計算し、整備・車検・自動車税・維持費もまとめて管理。GPSの走行ログ、天気と気象庁の警報から洗車に向く日がわかる洗車びより、走行距離で47都道府県をめぐるゲーム、ドライブSNSにも対応。基本無料です。">
+<meta name="keywords" content="フィドカ,車管理アプリ,バイク管理アプリ,燃費記録アプリ,走行ログ,GPSログ,ツーリングログ,峠,洗車日和,洗車記録,車ゲーム,日本一周,ドライブSNS,ドライブ記録,ツーリング,給油記録,燃費記録,燃費計算,ガソリン価格,レシート読み取り,整備記録,車検,オイル交換,メンテナンス,AI読み取り,EV,PHEV,電費,充電記録,維持費,費用レポート,PDF,CSV,カーライフ">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#07584f">
 <link rel="canonical" href="https://fidoca.jp/">
@@ -46,7 +46,7 @@
         "https://fidoca.jp/assets/screens/v2/05-maintenance-960.webp",
         "https://fidoca.jp/assets/screens/v2/06-fuel-price-960.webp"
       ],
-      "featureList": "給油記録, レシート読み取り, 燃費自動計算, EV・PHEV充電記録と電費, 整備書類のAI読み取り, 車検・整備リマインド, やることリスト, ガソリン価格マップ, 費用レポート, ドライブ記録, ドライブSNS(友達・みんなへの投稿、いいね、フォロー), PDF・CSV出力, クラウド同期",
+      "featureList": "給油記録, レシート読み取り, 燃費自動計算, EV・PHEV充電記録と電費, 整備書類のAI読み取り, 車検・整備リマインド, やることリスト, ガソリン価格マップ, 費用レポート, ドライブ記録, ドライブSNS(友達・みんなへの投稿、いいね、フォロー), PDF・CSV出力, クラウド同期, GPS走行ログ(速度色分け地図・速度/標高グラフ), 洗車びより(天気と気象庁の警報・注意報から洗車に向く日の目安), 洗車記録, 予定カレンダー, にっぽんドライブ(走行距離で47都道府県をめぐる旅), ミニゲーム",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY", "description": "無料プランあり。Pro(月500円/年4,900円)、Pro+(月900円/年8,900円)のサブスクリプションを提供。" },
       "downloadUrl": [
         "https://apps.apple.com/jp/app/%E3%83%95%E3%82%A3%E3%83%89%E3%82%AB/id6781597740",
@@ -62,6 +62,7 @@
       ],
       "inLanguage": "ja",
       "countriesSupported": "JP",
+      "areaServed": { "@type": "Country", "name": "日本" },
       "publisher": { "@id": "https://fidoca.jp/#org" }
     },
     {
@@ -97,7 +98,10 @@
         {"@type": "Question", "name": "Android版はありますか?", "acceptedAnswer": {"@type": "Answer", "text": "はい。Android版はGoogle Playで配信しています。ストアで「フィドカ」と検索してもインストールできます。iOS版はApp Storeで配信中で、記録できる内容や燃費の計算方法はiOSとAndroidで共通です。"}},
         {"@type": "Question", "name": "燃費はどうやって計算されますか?", "acceptedAnswer": {"@type": "Answer", "text": "満タン法で計算します。総走行距離と給油量から実燃費(km/L)を自動計算し、満タンまでの間に入れた部分給油は合算して扱います。燃費は数値として保存せず記録から都度計算するため、あとから走行距離や給油量を直すと燃費も再計算されます。"}},
         {"@type": "Question", "name": "他の燃費記録アプリとの違いは何ですか?", "acceptedAnswer": {"@type": "Answer", "text": "給油と燃費だけでなく、整備・車検・保険・自動車税までを同じ車両に紐づけて管理でき、ドライブの思い出を写真・動画で残してドライブSNSで共有することもできます。給油レシートの読み取りに加えて整備明細書・請求書のAI読み取りに対応し、周辺のガソリン価格を地図で比較できる点も特徴です。EV/PHEVの充電記録と電費(km/kWh)にも対応しています。"}},
-        {"@type": "Question", "name": "日本以外でも使えますか?", "acceptedAnswer": {"@type": "Answer", "text": "フィドカは日本向けに、円・km/L・km/kWhを前提として作っています。アプリの表示言語は日本語・英語・韓国語・中国語(簡体字・繁体字)から選べます。"}}
+        {"@type": "Question", "name": "日本以外でも使えますか?", "acceptedAnswer": {"@type": "Answer", "text": "フィドカは日本向けに、円・km/L・km/kWhを前提として作っています。アプリの表示言語は日本語・英語・韓国語・中国語(簡体字・繁体字)から選べます。"}},
+        {"@type": "Question", "name": "走行ログはどんな機能ですか?", "acceptedAnswer": {"@type": "Answer", "text": "アプリ内の「ひみつのガレージ」にある、GPSで走りを記録する機能です。スタートからストップまでの道のりを、速度で色分けした地図と速度・標高のグラフで振り返れます。アルバムから選んだ写真は撮影時刻をもとに走った地点へ自動で並びます。記録は端末内に保存され、Proでは走行ログ、Pro+では写真もクラウドに保存できます。走行ログはiPhone・Androidのアプリで使え、Web版では記録できません。"}},
+        {"@type": "Question", "name": "洗車びよりはどうやって判定していますか?", "acceptedAnswer": {"@type": "Answer", "text": "今後の天気(降水の見込み)と、気象庁が発表する警報・注意報をもとに、洗車に向く日の目安をホームに表示します。あくまで目安なので、出かける前に最新の天気予報もあわせて確認してください。洗車した日は洗車の記録として残り、費用は維持費の集計に反映されます。"}},
+        {"@type": "Question", "name": "ゲームも遊べるのですか?", "acceptedAnswer": {"@type": "Answer", "text": "はい。ホームの一番下にある「ひみつのガレージ」から、記録した走行距離で47都道府県をめぐる「にっぽんドライブ」や、「ドッジドライブ」「タイヤジャンプ」などのミニゲームを遊べます。"}}
       ]
     }
   ]
@@ -107,7 +111,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="preload" as="image" imagesrcset="./assets/screens/v2/01-overview-640.webp 640w, ./assets/screens/v2/01-overview-960.webp 960w" imagesizes="(max-width: 700px) 78vw, 390px">
-<link rel="stylesheet" href="./assets/home.css?v=20261008-1">
+<link rel="stylesheet" href="./assets/home.css?v=20261108-1">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -122,6 +126,7 @@
     <div class="nav-links">
       <a href="#features">できること</a>
       <a href="#social">ドライブSNS</a>
+      <a href="#play">走行ログ・ゲーム</a>
       <a href="#screens">アプリ画面</a>
       <a href="#plans">料金</a>
       <a href="#faq">よくある質問</a>
@@ -174,7 +179,7 @@
       </div>
     </div>
     <div class="trust-row" aria-label="対応内容">
-      <span>車・バイク対応</span><span>ガソリン〜EVまで</span><span>給油・燃費記録</span><span>整備・車検管理</span><span>ガソリン価格マップ</span><span>ドライブSNS</span>
+      <span>車・バイク対応</span><span>ガソリン〜EVまで</span><span>給油・燃費記録</span><span>整備・車検管理</span><span>ガソリン価格マップ</span><span>走行ログ</span><span>洗車びより</span><span>ドライブSNS</span><span>ミニゲーム</span>
     </div>
   </section>
 
@@ -290,6 +295,23 @@
         <div><span>km/kWh</span><strong>電費を自動計算</strong><small>満充電区間または入力したEV走行距離から算出</small></div>
         <div><span>¥</span><strong>充電費も費用レポートへ</strong><small>給油費と並べて月別・年間で自動集計</small></div>
         <div><span>%</span><strong>残量とEV距離を記録</strong><small>充電前後のバッテリー残量もあわせて保存</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAY: TRACK LOG / CAR WASH / GARAGE ============ -->
+  <section class="section intro" id="play" aria-labelledby="play-title">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">走る・洗う・遊ぶ</p>
+        <h2 id="play-title">記録だけじゃない。<br>クルマ時間を、もっと楽しく。</h2>
+        <p>峠やワインディング、ツーリングの走りをGPSで残す走行ログ。天気と気象庁の警報・注意報から洗車に向く日がわかる洗車びより。走った距離で47都道府県をめぐる「にっぽんドライブ」とミニゲーム。日本のクルマ好きのための遊べる機能も、フィドカにまとめました。</p>
+      </header>
+      <div class="value-grid">
+        <article class="value-card reveal"><span class="value-num">GPS</span><h3>走行ログ</h3><p>スタートからストップまでの走りをGPSで記録。速度で色分けした地図、速度・標高のグラフで、峠道やツーリングの走りをあとから振り返れます。撮った写真は撮影時刻の地点に自動で並びます。</p><a href="./guide/drive-log-app.html">走行ログアプリでできること</a></article>
+        <article class="value-card reveal"><span class="value-num">洗車</span><h3>洗車びより</h3><p>この先の天気と、気象庁の警報・注意報をもとに、洗車に向く日の目安をホームに表示。洗った日と費用は洗車の記録として残り、維持費の集計にも反映されます。</p><a href="./guide/car-wash-day.html">洗車に向く日の見分け方</a></article>
+        <article class="value-card reveal"><span class="value-num">47</span><h3>にっぽんドライブ</h3><p>記録した走行距離で、北海道から沖縄まで47都道府県をめぐる旅のゲーム。全国約4万kmの道のりを進み、県ごとの名産品を集めます。バイク版にも切り替えられます。</p><a href="./guide/japan-drive-game.html">走行距離で日本一周する遊び方</a></article>
+        <article class="value-card reveal"><span class="value-num">GAME</span><h3>ひみつのガレージ</h3><p>ホームの一番下から入れる、クルマ好きのための秘密の部屋。障害物をよけて走る「ドッジドライブ」や、タイヤで塔を登る「タイヤジャンプ」などのミニゲームが遊べます。</p><a href="./guide/japan-drive-game.html#garage">ひみつのガレージの楽しみ方</a></article>
       </div>
     </div>
   </section>
@@ -479,6 +501,24 @@
           <p>満タン法、部分給油、レシート読み取りなど、日本で使いやすいアプリを選ぶ6つの基準。</p>
           <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
         </a>
+        <a class="guide-card reveal" href="./guide/gas-cost-calculation.html">
+          <span class="guide-label">燃費・給油</span>
+          <h3>ガソリン代の計算方法</h3>
+          <p>走行距離÷燃費×単価で、月・年間・1kmあたりのガソリン代を計算例つきで解説。</p>
+          <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="guide-card reveal" href="./guide/gas-receipt-app.html">
+          <span class="guide-label">給油・レシート</span>
+          <h3>ガソリンレシート読み取りアプリ</h3>
+          <p>日付・油種・給油量・単価・金額を読み取り、正しい燃費記録につなげる確認ポイント。</p>
+          <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="guide-card reveal" href="./guide/oil-change-timing.html">
+          <span class="guide-label">整備・メンテナンス</span>
+          <h3>オイル交換の時期の目安</h3>
+          <p>距離と期間の考え方、シビアコンディション、次の交換を忘れない記録のコツ。</p>
+          <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
+        </a>
         <a class="guide-card reveal" href="./guide/car-maintenance-app.html">
           <span class="guide-label">整備・車検</span>
           <h3>車の整備記録アプリの選び方</h3>
@@ -491,19 +531,32 @@
           <p>給油・保険・税金・整備費を一元化し、月別・年間の支出を正しく把握する方法。</p>
           <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
         </a>
-        <a class="guide-card reveal" href="./guide/gas-receipt-app.html">
-          <span class="guide-label">給油・レシート</span>
-          <h3>ガソリンレシート読み取りアプリ</h3>
-          <p>日付・油種・給油量・単価・金額を読み取り、正しい燃費記録につなげる確認ポイント。</p>
-          <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
-        </a>
         <a class="guide-card reveal" href="./guide/ev-charge-record-app.html">
           <span class="guide-label">EV・PHEV</span>
           <h3>EV・PHEV充電記録アプリの選び方</h3>
           <p>充電量・電気代・残量・EV走行距離を記録し、電費と充電費を把握する方法。</p>
           <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
         </a>
+        <a class="guide-card reveal" href="./guide/drive-log-app.html">
+          <span class="guide-label">走行ログ・GPS</span>
+          <h3>走行ログアプリでできること</h3>
+          <p>ドライブ・ツーリング・峠の走りをGPSで記録。速度で色分けした地図と標高グラフで振り返り。</p>
+          <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="guide-card reveal" href="./guide/car-wash-day.html">
+          <span class="guide-label">洗車・お手入れ</span>
+          <h3>洗車に向く日の見分け方</h3>
+          <p>天気・花粉・黄砂・梅雨・融雪剤など、日本の季節に合わせた洗車のタイミングと記録。</p>
+          <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="guide-card reveal" href="./guide/japan-drive-game.html">
+          <span class="guide-label">ゲーム・ガレージ</span>
+          <h3>走行距離で日本一周するゲーム</h3>
+          <p>走った距離で47都道府県をめぐる「にっぽんドライブ」と、クルマ好き向けミニゲーム。</p>
+          <span class="guide-more">ガイドを読む <span aria-hidden="true">→</span></span>
+        </a>
       </div>
+      <p class="guides-all"><a class="btn btn-light" href="./guide/">ガイドをすべて見る</a></p>
     </div>
   </section>
 
@@ -526,6 +579,9 @@
         <details><summary>燃費はどうやって計算されますか?</summary><p>満タン法で計算します。総走行距離と給油量から実燃費(km/L)を自動計算し、満タンまでの間に入れた部分給油は合算して扱います。燃費は数値として保存せず記録から都度計算するため、あとから走行距離や給油量を直すと燃費も再計算されます。</p></details>
         <details><summary>他の燃費記録アプリとの違いは何ですか?</summary><p>給油と燃費だけでなく、整備・車検・保険・自動車税までを同じ車両に紐づけて管理でき、ドライブの思い出を写真・動画で残してドライブSNSで共有することもできます。給油レシートの読み取りに加えて整備明細書・請求書のAI読み取りに対応し、周辺のガソリン価格を地図で比較できる点も特徴です。EV/PHEVの充電記録と電費(km/kWh)にも対応しています。</p></details>
         <details><summary>日本以外でも使えますか?</summary><p>フィドカは日本向けに、円・km/L・km/kWhを前提として作っています。アプリの表示言語は日本語・英語・韓国語・中国語(簡体字・繁体字)から選べます。</p></details>
+        <details><summary>走行ログはどんな機能ですか?</summary><p>アプリ内の「ひみつのガレージ」にある、GPSで走りを記録する機能です。スタートからストップまでの道のりを、速度で色分けした地図と速度・標高のグラフで振り返れます。アルバムから選んだ写真は撮影時刻をもとに走った地点へ自動で並びます。記録は端末内に保存され、Proでは走行ログ、Pro+では写真もクラウドに保存できます。走行ログはiPhone・Androidのアプリで使え、Web版では記録できません。</p></details>
+        <details><summary>洗車びよりはどうやって判定していますか?</summary><p>今後の天気(降水の見込み)と、気象庁が発表する警報・注意報をもとに、洗車に向く日の目安をホームに表示します。あくまで目安なので、出かける前に最新の天気予報もあわせて確認してください。洗車した日は洗車の記録として残り、費用は維持費の集計に反映されます。</p></details>
+        <details><summary>ゲームも遊べるのですか?</summary><p>はい。ホームの一番下にある「ひみつのガレージ」から、記録した走行距離で47都道府県をめぐる「にっぽんドライブ」や、「ドッジドライブ」「タイヤジャンプ」などのミニゲームを遊べます。</p></details>
       </div>
     </div>
   </section>
@@ -552,7 +608,7 @@
   </div>
   <div class="footer-inner">
     <span>© 2026 フィドカ</span>
-    <span class="footer-links"><a href="#features">できること</a><a href="#guides">お役立ちガイド</a><a href="#plans">料金</a><a href="#faq">よくある質問</a><a href="./account.html">ログイン</a><a href="./terms.html">利用規約</a><a href="./privacy.html">プライバシーポリシー</a><a href="./commerce.html">特定商取引法に基づく表記</a><a href="./account-deletion.html">アカウント削除</a><a href="mailto:support@fidoca.jp">お問い合わせ</a></span>
+    <span class="footer-links"><a href="#features">できること</a><a href="./guide/">お役立ちガイド</a><a href="#plans">料金</a><a href="#faq">よくある質問</a><a href="./account.html">ログイン</a><a href="./terms.html">利用規約</a><a href="./privacy.html">プライバシーポリシー</a><a href="./commerce.html">特定商取引法に基づく表記</a><a href="./account-deletion.html">アカウント削除</a><a href="mailto:support@fidoca.jp">お問い合わせ</a></span>
   </div>
   <p class="footer-legal">Apple、Appleロゴ、App Storeは、米国およびその他の国で登録されたApple Inc.の商標です。Google Play および Google Play ロゴは Google LLC の商標です。</p>
 </footer>

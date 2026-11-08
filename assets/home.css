@@ -286,6 +286,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 /* ---------- guides ---------- */
 .guides-section { background: var(--paper); }
+.guides-all { margin-top: 32px; text-align: center; }
 .guide-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .guide-card { min-height: 280px; padding: 30px; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 26px; background: #fff; box-shadow: var(--shadow-sm); transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s ease; }
 .guide-card:hover { transform: translateY(-6px); border-color: #bcd4cc; box-shadow: var(--shadow-md); }
