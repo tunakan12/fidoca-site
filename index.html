@@ -294,8 +294,11 @@
             <li>記録はグラフ・費用レポートへ自動反映</li>
           </ul>
         </div>
-        <figure class="story-single reveal">
-          <picture><source srcset="./assets/screens/v2/02-fuel-receipt-640.webp 640w, ./assets/screens/v2/02-fuel-receipt-960.webp 960w" sizes="(max-width: 700px) 78vw, 400px"><img src="./assets/screens/v2/02-fuel-receipt-960.webp" alt="レシートを撮れば給油記録がラクに。給油レシートをカメラで写して油種・給油量・金額を入力できる給油記録画面" width="960" height="2077" loading="lazy"></picture>
+        <figure class="story-single story-video reveal">
+          <video class="autoplay-video" muted loop playsinline preload="none" width="720" height="1280" poster="./assets/video/fuel-receipt-poster.webp" aria-label="給油の記録を3ステップで紹介する動画。メーターの距離を入力し、レシートを撮るだけで給油量と金額を自動で読み取り、確認して保存すると燃費がすぐわかる">
+            <source src="./assets/video/fuel-receipt-720.mp4" type="video/mp4">
+          </video>
+          <figcaption class="video-caption">レシートを撮るだけで、燃費まで自動で記録(20秒)</figcaption>
         </figure>
       </div>
 
@@ -793,6 +796,22 @@
         });
       }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
       els.forEach(function (el) { io.observe(el); });
+    }
+
+    // 紹介動画: 画面に入ったときだけ再生する(動きを抑える設定なら再生ボタンを出すだけ)
+    var videos = document.querySelectorAll('.autoplay-video');
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (calm || !('IntersectionObserver' in window)) {
+      videos.forEach(function (v) { v.controls = true; v.preload = 'metadata'; });
+    } else {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var v = entry.target;
+          if (entry.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { v.controls = true; }); }
+          else { v.pause(); }
+        });
+      }, { threshold: 0.35 });
+      videos.forEach(function (v) { vio.observe(v); });
     }
 
     // ヘッダー: スクロールで少し細くし、いま見ている区画のメニューに下線を出す

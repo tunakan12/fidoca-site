@@ -185,6 +185,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .story.reverse .story-copy { order: 2; }
 .story-single { width: min(400px, 100%); justify-self: center; position: relative; z-index: 1; overflow: hidden; border: 1px solid var(--line); border-radius: 34px; box-shadow: var(--shadow-poster); transform: rotate(-1.5deg); background: #fff; }
 .story-single img { width: 100%; height: auto; }
+.story-video { overflow: visible; border: 0; box-shadow: none; background: transparent; }
+.story-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border: 1px solid var(--line); border-radius: 34px; box-shadow: var(--shadow-poster); background: #eef3fc; }
+.video-caption { margin-top: 14px; text-align: center; font-size: 14px; line-height: 1.6; color: var(--muted); }
 .metric-row { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); }
 .metric-row div { padding: 16px 16px; border-bottom: 1px solid var(--line); }
 .metric-row div:nth-child(odd) { padding-left: 0; }
