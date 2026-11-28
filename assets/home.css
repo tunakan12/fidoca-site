@@ -134,12 +134,29 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .trust-row span:first-child { border-left: 0; }
 
 /* ---------- pains ---------- */
-.pains-section { padding-bottom: 0; background: var(--paper); }
+.pains-section {
+  color: #fff;
+  background: linear-gradient(115deg, var(--green-deep), #10332f);
+}
+.pains-section .eyebrow, .pains-section h2 span { color: #c3f095; }
+.pains-section .section-head h2 { font-size: clamp(32px, 5.2vw, 62px); text-wrap: balance; }
+.pains-section .section-head > p:last-child { color: #e0f4ec; font-size: clamp(16px, 1.5vw, 18px); }
 .pain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.pain-card { padding: 26px 24px; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fff; box-shadow: var(--shadow-sm); }
-.pain-card h3 { font-size: 16px; line-height: 1.5; }
-.pain-card h3::before { content: ""; display: block; width: 26px; height: 3px; margin-bottom: 14px; border-radius: 99px; background: var(--lime); }
-.pain-card p { margin-top: 12px; color: var(--muted); font-size: 13px; }
+.pain-card {
+  padding: 26px 22px;
+  border-radius: var(--radius-md);
+  background: var(--green-soft);
+  color: var(--green-deep);
+}
+.pain-card .pain-question { font-size: 15px; font-weight: 700; color: var(--ink-soft); }
+.pain-card h3 {
+  margin: 14px 0 10px;
+  font-size: clamp(22px, 2.1vw, 28px);
+  line-height: 1.35;
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+.pain-card h3 + p { color: var(--ink-soft); font-size: 16px; }
 
 /* ---------- features ---------- */
 .intro { background: var(--paper); }
