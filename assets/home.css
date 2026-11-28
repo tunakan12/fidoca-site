@@ -156,6 +156,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: -.04em;
   text-wrap: balance;
 }
+.pain-card .keep-phrase { white-space: nowrap; }
 .pain-card h3 + p { color: var(--ink-soft); font-size: 16px; }
 
 /* ---------- features ---------- */
